@@ -13,7 +13,7 @@ time_button.onclick = () => {
     const ms = String(now.getMilliseconds()).padStart(3, '0');
     const time = `${hhmmss}.${ms}`;
 
-    const li = document.createElement('div'); // div로 맞춤
+    const li = document.createElement('div');
     li.textContent = time;
     time_log.appendChild(li);
 };
