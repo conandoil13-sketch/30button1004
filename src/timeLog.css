@@ -1,0 +1,31 @@
+.time_button {
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+}
+
+.time_log {
+    text-align: center;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.time_stop_button {
+    text-align: center;
+    position: fixed;
+    top: 65%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+}
+
+.return_link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    text-decoration: none;
+}

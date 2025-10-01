@@ -1,0 +1,43 @@
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #f9f9f9;
+    font-family: sans-serif;
+}
+
+#egg {
+    font-size: 120px;
+    transition: transform 0.1s, opacity 0.1s;
+}
+
+
+#egg:active {
+    transform: scale(0.9);
+    opacity: 0.8;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    min-height: 40px;
+}
+
+#remaining {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #666;
+}
+
+.return_link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    text-decoration: none;
+}

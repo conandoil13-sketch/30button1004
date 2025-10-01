@@ -1,0 +1,52 @@
+#winner {
+    font-weight: 700;
+}
+
+.winner::after {
+    content: " 👑";
+}
+
+#diceOne {
+    font-size: 32px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+}
+
+#diceTwo {
+    font-size: 32px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+}
+
+#result {
+    text-align: center;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+}
+
+#diceTitle {
+    text-align: center;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.return_link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    text-decoration: none;
+}

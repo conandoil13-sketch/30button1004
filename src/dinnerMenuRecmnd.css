@@ -1,0 +1,61 @@
+#dinnerMenuQ {
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+}
+
+#dinnerMenuKr {
+    text-align: center;
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+}
+
+#dinnerMenuJp {
+    text-align: center;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+}
+
+#dinnerMenuCn {
+    text-align: center;
+    position: absolute;
+    top: 40%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+}
+
+#dinnerMenuUs {
+    text-align: center;
+    position: absolute;
+    top: 40%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+}
+
+#result_dinnerMenu {
+    text-align: center;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+}
+
+.return_link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    text-decoration: none;
+}
