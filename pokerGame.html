@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./src/pokerGame.css">
+    <title>Title</title>
+</head>
+<div class="wrap">
+    <h1>카드 뽑기</h1>
+
+    <div class="controls">
+        <label class="inline">
+            <input id="withJokers" type="checkbox" />
+            조커 2장 포함
+        </label>
+
+        <label class="inline">
+            뽑을 장수
+            <input id="count" type="number" min="1" value="5" />
+        </label>
+
+        <button id="newdeck">새 덱 만들기(섞기)</button>
+        <button id="draw">뽑기</button>
+        <button id="reset">초기화</button>
+    </div>
+
+    <div class="info">
+        남은 카드: <span id="remain">0</span>장
+    </div>
+
+    <div id="result" class="cards" aria-live="polite">
+    </div>
+</div>
+
+<body>
+
+    <script type="module" src="./src/pokerGame.js"></script>
+    <a href="index.html" class="return_link">⮐</a>
+</body>
+
+</html>

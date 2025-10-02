@@ -1,6 +1,6 @@
 
-var DOT_SIZE = 10;
-var PADDING = 4;
+const DOT_SIZE = 10;
+const PADDING = 4;
 
 function randInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -8,17 +8,16 @@ function randInt(min, max) {
 
 
 function addDot() {
-    var w = window.innerWidth;
-    var h = window.innerHeight;
+    const w = window.innerWidth;
+    const h = window.innerHeight;
 
+    const maxX = Math.max(PADDING, w - DOT_SIZE - PADDING);
+    const maxY = Math.max(PADDING, h - DOT_SIZE - PADDING);
 
-    var maxX = Math.max(PADDING, w - DOT_SIZE - PADDING);
-    var maxY = Math.max(PADDING, h - DOT_SIZE - PADDING);
+    const x = randInt(PADDING, maxX);
+    const y = randInt(PADDING, maxY);
 
-    var x = randInt(PADDING, maxX);
-    var y = randInt(PADDING, maxY);
-
-    var d = document.createElement('div');
+    const d = document.createElement('div');
     d.className = 'dot';
     d.style.left = x + 'px';
     d.style.top = y + 'px';
@@ -38,8 +37,8 @@ window.resetAll = resetAll;
 
 
 window.addEventListener('DOMContentLoaded', function () {
-    var addBtn = document.getElementById('add');
-    var resetBtn = document.getElementById('reset');
+    const addBtn = document.getElementById('add');
+    const resetBtn = document.getElementById('reset');
 
     if (!addBtn || !resetBtn) {
         console.error('버튼을 못 찾았습니다. HTML id 확인!');

@@ -1,0 +1,110 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #10131a;
+    color: #e9edf7;
+    font: 16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrap {
+    width: min(920px, 96vw);
+    background: #171b24;
+    border: 1px solid #2a3040;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
+
+h1 {
+    margin: 0 0 12px;
+    font-size: 20px;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 8px 0 12px;
+}
+
+.controls .inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+input[type="number"],
+input[type="checkbox"],
+button {
+    font: inherit;
+}
+
+input[type="number"] {
+    width: 80px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #2a3040;
+    background: #0f1320;
+    color: #e9edf7;
+}
+
+button {
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #2a3040;
+    background: #6fa2ff;
+    color: #0a0e18;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button#reset {
+    background: #5fe0a3;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.info {
+    opacity: .8;
+    margin: 2px 0 12px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+    gap: 8px;
+}
+
+.card {
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    border: 1px solid #2a3040;
+    background: #0f1320;
+    padding: 10px 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-weight: 700;
+    letter-spacing: .3px;
+}
+
+.card.red {
+    color: #ff6b6b;
+}
+
+.return_link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    text-decoration: none;
+}
