@@ -1,5 +1,23 @@
+body {
+    background: #10131a;
+    color: #e9edf7;
+}
+
 #orange {
-    background-color: orange;
+    text-decoration: none;
+    font-weight: bolder;
+    background: linear-gradient(90deg,
+            #00eaff,
+            #ff00ff,
+            #ffff00,
+            #00ff88,
+            #00eaff);
+    background-size: 300% 300%;
+    color: white;
+    animation: jewelSparkle 3s linear infinite;
+    text-shadow:
+        0 0 6px rgba(203, 203, 203, 0.285),
+        0 0 12px rgba(152, 152, 152, 0.195);
     width: 200px;
     height: 100px;
     border-radius: 10px;
@@ -7,37 +25,69 @@
     line-height: 100px;
     font-size: 50px;
     position: absolute;
-    top: 30px;
-    left: 600px;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes jewelSparkle {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 #result {
     background-color: white;
-    width: 500px;
-    height: 300px;
+    color: #000000;
+    width: 350px;
+    height: 100px;
     border-radius: 10px;
     text-align: center;
     line-height: 100px;
-    font-size: 50px;
+    font-size: 36px;
     position: absolute;
-    top: 200px;
-    left: 450px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #tries {
     font-size: 30px;
     position: absolute;
-    top: 150px;
-    left: 625px;
+    top: 30%;
+    left: 35%;
+    transform: translate(-50%, -50%);
 }
 
 #gems {
     font-size: 30px;
     position: absolute;
-    top: 150px;
-    left: 725px;
+    top: 30%;
+    left: 65%;
+    transform: translate(-50%, -50%);
 }
 
 #price {
     font-size: 20px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#won {
+    font-size: 20px;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
 }
