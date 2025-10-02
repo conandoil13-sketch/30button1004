@@ -1,9 +1,6 @@
+
 var DOT_SIZE = 10;
 var PADDING = 4;
-
-var addBtn = document.querySelector('#add');
-var resetBtn = document.querySelector('#reset');
-
 
 function randInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -13,6 +10,7 @@ function randInt(min, max) {
 function addDot() {
     var w = window.innerWidth;
     var h = window.innerHeight;
+
 
     var maxX = Math.max(PADDING, w - DOT_SIZE - PADDING);
     var maxY = Math.max(PADDING, h - DOT_SIZE - PADDING);
@@ -26,10 +24,29 @@ function addDot() {
     d.style.top = y + 'px';
     d.style.width = DOT_SIZE + 'px';
     d.style.height = DOT_SIZE + 'px';
+
     document.body.appendChild(d);
 }
-
 
 function resetAll() {
     location.reload();
 }
+
+
+window.addDot = addDot;
+window.resetAll = resetAll;
+
+
+window.addEventListener('DOMContentLoaded', function () {
+    var addBtn = document.getElementById('add');
+    var resetBtn = document.getElementById('reset');
+
+    if (!addBtn || !resetBtn) {
+        console.error('버튼을 못 찾았습니다. HTML id 확인!');
+        return;
+    }
+    addBtn.onclick = addDot;
+    resetBtn.onclick = resetAll;
+
+    console.log('[dots] ready');
+});
