@@ -1,6 +1,6 @@
 const TICK_MS = 50;
-const TAP_GAIN = 8;
-const DECAY_PER_SEC = 16;
+const TAP_GAIN = 5.5;
+const DECAY_PER_SEC = 20;
 const DECAY_PER_TICK = DECAY_PER_SEC * (TICK_MS / 1000);
 
 
