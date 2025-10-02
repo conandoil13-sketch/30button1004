@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./src/metroSulGame.css">
+    <title>Title</title>
+</head>
+
+<body>
+    <!-- 전환용 페이드 오버레이 -->
+    <div id="fade" aria-hidden="true"></div>
+
+    <!-- 인트로 -->
+    <section id="intro" class="screen active">
+        <div class="trains"></div>
+        <div class="beat-layer" aria-hidden="true"></div>
+    </section>
+
+    <!-- 노선 선택 -->
+    <main id="select" class="screen">
+        <h1 class="title">노선을 선택하세요</h1>
+        <div class="line-grid" aria-live="polite">
+            <button class="line-btn l1" data-line="1">1호선</button>
+            <button class="line-btn l2" data-line="2">2호선</button>
+            <button class="line-btn l3" data-line="3">3호선</button>
+            <button class="line-btn l4" data-line="4">4호선</button>
+            <button class="line-btn l5" data-line="5">5호선</button>
+            <button class="line-btn l6" data-line="6">6호선</button>
+            <button class="line-btn l7" data-line="7">7호선</button>
+            <button class="line-btn l8" data-line="8">8호선</button>
+            <button class="line-btn l9" data-line="9">9호선</button>
+            <button class="line-btn rand" data-line="R">랜덤</button>
+        </div>
+    </main>
+
+    <!-- 게임 -->
+    <section id="game" class="screen">
+        <header class="game-header">
+            <h2 id="lineTitle">지하철 게임</h2>
+            <div class="header-actions">
+                <div id="turnInfo" class="turn">플레이어 차례</div>
+                <button id="homeBtn" class="ghost">처음으로</button>
+            </div>
+        </header>
+
+        <div class="ui">
+            <div class="input-row">
+                <input id="stationInput" type="text" placeholder="역 이름 입력" autocomplete="off" />
+                <button id="submitBtn">제출</button>
+            </div>
+            <div class="status" id="status">노선을 선택하면 시작합니다.</div>
+            <ol class="used" id="usedList" aria-live="polite"></ol>
+        </div>
+
+        <button id="backBtn" class="ghost">〈 노선 다시 선택</button>
+    </section>
+    <script type="module" src="./src/metroSulGame.js"></script>
+    <a href="index.html" class="return_link">⮐</a>
+</body>
+
+</html>
