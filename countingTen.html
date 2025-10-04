@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./src/countingTen.css">
+    <title>Title</title>
+</head>
+
+<body>
+    <div class="timer">
+        <span id="elapsed">0.00</span><span class="unit">s</span>
+    </div>
+
+    <p class="target">목표: 10.00s</p>
+
+    <div class="btns">
+        <button id="startStop" type="button">시작</button>
+        <button id="reset" type="button" disabled>리셋</button>
+        <label class="blind">
+            <input type="checkbox" id="blindMode" />
+            블라인드 모드(진행 중 시간 숨김)
+        </label>
+    </div>
+
+    <p id="result" aria-live="polite"></p>
+    </main>
+    <script type="module" src="./src/countingTen.js"></script>
+    <a href="index.html" class="return_link">⮐</a>
+</body>
+
+</html>
