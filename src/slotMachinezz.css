@@ -1,0 +1,204 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background: radial-gradient(120% 100% at 50% 0%, #191a27 0%, #0c0f1a 60%, #080a12 100%);
+    color: #f3f6ff;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", sans-serif;
+}
+
+
+.room {
+    min-height: 100%;
+    display: grid;
+    place-items: center;
+    padding: 18px;
+}
+
+.machine {
+    position: relative;
+    width: min(96vw, 520px);
+    aspect-ratio: 3 / 4;
+    filter: drop-shadow(0 26px 40px rgba(0, 0, 0, .55));
+}
+
+
+.top-sign {
+    position: absolute;
+    inset: -48px 10% auto 10%;
+    height: 70px;
+    border-radius: 16px 16px 8px 8px;
+    background: linear-gradient(180deg, #e7dede, #e0bebe 50%, #b66);
+    box-shadow: inset 0 0 0 3px rgba(80, 40, 40, .35), 0 6px 20px rgba(0, 0, 0, .35);
+    display: grid;
+    place-items: center;
+}
+
+.top-sign span {
+    font-weight: 800;
+    letter-spacing: 1.6px;
+    text-shadow: 0 2px 0 rgba(0, 0, 0, .35), 0 0 14px rgba(255, 220, 160, .5);
+}
+
+
+.bezel {
+    position: absolute;
+    inset: 0;
+    border-radius: 22px;
+    background:
+        radial-gradient(100% 80% at 50% 0%, rgba(255, 255, 255, .1), transparent 60%),
+        linear-gradient(180deg, #9aa6b2, #3f4d5a 40%, #2b3642 60%, #1f2733);
+    box-shadow:
+        inset 0 0 0 2px rgba(255, 255, 255, .08),
+        inset 0 0 0 12px rgba(0, 0, 0, .25),
+        0 14px 40px rgba(0, 0, 0, .5);
+    padding: 18px 16px 22px;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 14px;
+}
+
+
+.window {
+    position: relative;
+    background: linear-gradient(#0b1016, #0d141d);
+    border-radius: 14px;
+    box-shadow:
+        inset 0 0 0 3px rgba(255, 255, 255, .06),
+        inset 0 0 40px rgba(0, 0, 0, .6);
+    padding: 14px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+
+.reel-frame {
+    background: #0a0f18;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .06),
+        inset 0 0 40px rgba(0, 0, 0, .65);
+    height: 160px;
+}
+
+
+.reel {
+    display: grid;
+    grid-auto-rows: 80px;
+    align-content: start;
+    transform: translateY(0);
+}
+
+.cell {
+    display: grid;
+    place-items: center;
+    font-size: 38px;
+    background: linear-gradient(#141b25, #0f151f);
+    border-bottom: 1px solid rgba(255, 255, 255, .05);
+}
+
+
+.controls {
+    display: grid;
+    place-items: center;
+}
+
+.btn {
+    padding: 12px 20px;
+    border: 0;
+    border-radius: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #0b1016;
+    background: linear-gradient(#ffd86b, #ffb23c);
+    box-shadow: 0 6px 0 #a06312, 0 12px 24px rgba(0, 0, 0, .35);
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 4px 0 #a06312, 0 8px 18px rgba(0, 0, 0, .4);
+}
+
+
+.marquee {
+    position: absolute;
+    inset: -8px;
+    border-radius: 22px;
+    pointer-events: none;
+    --bulbs: 28;
+    --r: 10px;
+}
+
+
+.marquee .bulb {
+    position: absolute;
+    width: var(--r);
+    height: var(--r);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 2px rgba(0, 0, 0, .35),
+        0 0 18px rgba(0, 0, 0, .5);
+    transform-origin: center;
+
+    left: 50%;
+    top: 50%;
+    transform:
+        rotate(calc(var(--i) * 360deg / var(--bulbs))) translate(calc((min(96vw, 520px) / 2) - 18px)) translateY(-50%);
+}
+
+
+.layer-a .bulb {
+    background: #ffd8a8;
+}
+
+.layer-b .bulb {
+    background: #ff8b8b;
+}
+
+
+@keyframes glow {
+
+    0%,
+    65% {
+        filter: brightness(.55);
+        box-shadow: 0 0 0 2px rgba(0, 0, 0, .35), 0 0 10px rgba(0, 0, 0, .3);
+    }
+
+    8%,
+    20% {
+        filter: brightness(1.9);
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, .25), 0 0 20px rgba(255, 240, 200, .8);
+    }
+}
+
+.marquee.layer-a .bulb {
+    animation: glow 2.2s linear infinite;
+    animation-delay: calc(var(--i) * 0.08s);
+}
+
+.marquee.layer-b .bulb {
+    animation: glow 2.2s linear infinite;
+
+    animation-delay: calc(1s + var(--i) * 0.08s);
+}
+
+
+@media (max-height: 700px) {
+    .reel-frame {
+        height: 130px;
+    }
+
+    .cell {
+        font-size: 34px;
+    }
+}
