@@ -81,7 +81,7 @@ h1 {
     display: grid;
     position: relative;
     top: 20%;
-    grid-template-rows: repeat(4, 80px);
+    grid-template-rows: repeat(4, 60px);
     grid-template-columns: repeat(6, 30px);
     gap: 2.5vmin;
     padding: 6vmin 5vmin;
