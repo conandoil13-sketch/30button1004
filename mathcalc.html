@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./src/mathcalc.css">
+    <title>Title</title>
+</head>
+
+<body>
+    <main class="sheet">
+        <header class="sheet__hdr">
+            <h1>사칙연산 2지선다</h1>
+            <div class="meta">
+                <span id="round">1</span>문제째 · 정답 <span id="score">0</span>
+            </div>
+        </header>
+
+        <section class="qbox">
+            <div id="question" class="question">—</div>
+            <div class="choices">
+                <button id="choiceL" class="choice" type="button">—</button>
+                <button id="choiceR" class="choice" type="button">—</button>
+            </div>
+            <p id="feedback" class="feedback" aria-live="polite"></p>
+        </section>
+
+        <footer class="sheet__ftr">
+            <button id="nextBtn" class="next" type="button" disabled>다음 문제</button>
+            <button id="resetBtn" class="reset" type="button">전체 리셋</button>
+        </footer>
+    </main>
+    <script type="module" src="./src/mathcalc.js"></script>
+    <a href="index.html" class="return_link">⮐</a>
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #222;
+    background: #e7e2d5;
+}
+
+
+.sheet {
+    max-width: 720px;
+    margin: 16px auto;
+    padding: 20px 16px 18px;
+    background:
+        radial-gradient(100% 120% at 50% 0%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 60%),
+        repeating-linear-gradient(115deg,
+            rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.02) 8px,
+            rgba(255, 255, 255, 0.03) 8px, rgba(255, 255, 255, 0.03) 16px),
+        #f3efe6;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
+
+.sheet__hdr {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+}
+
+.sheet__hdr h1 {
+    font-size: clamp(20px, 5vw, 28px);
+    margin: 0;
+    letter-spacing: 0.3px;
+}
+
+.meta {
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+
+.qbox {
+    text-align: center;
+    padding: 8px 8px 2px;
+}
+
+.question {
+    font-variant-numeric: tabular-nums;
+    font-size: clamp(28px, 10vw, 56px);
+    letter-spacing: .4px;
+    margin: 18px 0 14px;
+}
+
+
+.choices {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.choice {
+    padding: 16px 12px;
+    border: 2px solid rgba(0, 0, 0, 0.18);
+    border-radius: 12px;
+    background: linear-gradient(#fffdf8, #f6f0e6);
+    font-size: clamp(18px, 6vw, 28px);
+    cursor: pointer;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.06);
+    transition: transform .06s ease, box-shadow .12s ease, border-color .12s ease;
+    touch-action: manipulation;
+}
+
+.choice:active {
+    transform: translateY(1px);
+}
+
+.choice.correct {
+    border-color: #1d7e3f;
+    box-shadow: 0 0 0 3px rgba(29, 126, 63, .15) inset;
+}
+
+.choice.wrong {
+    border-color: #b83434;
+    box-shadow: 0 0 0 3px rgba(184, 52, 52, .12) inset;
+}
+
+
+.feedback {
+    min-height: 1.6em;
+    margin: 8px 0 6px;
+    font-size: clamp(14px, 3.8vw, 16px);
+    color: #4a3e2a;
+}
+
+
+.sheet__ftr {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    padding-top: 12px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.15);
+    margin-top: 12px;
+}
+
+.next,
+.reset {
+    padding: 10px 14px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    background: #fffaf0;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.next[disabled] {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+
+@media (max-width: 420px) {
+    .choice {
+        padding: 14px 10px;
+    }
+}
