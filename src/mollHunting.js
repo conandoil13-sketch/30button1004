@@ -30,7 +30,7 @@ function popOnce() {
     const h = chooseHole();
     currentHole = h;
     h.classList.add('up');
-    const upFor = randInt(900, 1400); // 올라와 있는 시간 (판정 여유)
+    const upFor = randInt(500, 700); // 올라와 있는 시간 (판정 여유)
     hideTimer = setTimeout(() => {
         if (h.classList.contains('up')) {
             h.classList.remove('up');
