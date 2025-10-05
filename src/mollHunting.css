@@ -1,0 +1,185 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background: radial-gradient(120% 100% at 50% 0%, #1c2430 0%, #0b1118 60%);
+    color: #eef2f7;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", sans-serif;
+}
+
+.wrap {
+    max-width: 640px;
+    margin: 20px auto;
+    padding: 16px;
+}
+
+.hud {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.btn {
+    padding: 10px 14px;
+    border: 0;
+    border-radius: 10px;
+    background: linear-gradient(#7ae0a4, #37c97e);
+    color: #0a1018;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.garden {
+    position: relative;
+    border-radius: 16px;
+    padding: 14px;
+    background:
+        radial-gradient(120% 100% at 50% 0%, rgba(255, 255, 255, .08), transparent 50%),
+        repeating-linear-gradient(10deg, #5a3d1e, #5a3d1e 12px, #6c4b26 12px, #6c4b26 24px);
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .05), 0 10px 30px rgba(0, 0, 0, .45);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    touch-action: manipulation;
+}
+
+
+.hole {
+    position: relative;
+    height: 28vmin;
+    max-height: 160px;
+    min-height: 110px;
+    border-radius: 12px;
+    background:
+        linear-gradient(#29411f, #22361a);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, .45);
+    display: grid;
+    place-items: end;
+    overflow: hidden;
+}
+
+
+.hole::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    width: 78%;
+    height: 38%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 50% 60%, #2b1c0f 40%, #1b120a 70%, #0e0703 100%);
+    box-shadow: inset 0 4px 12px rgba(255, 255, 255, .06), 0 6px 16px rgba(0, 0, 0, .5);
+}
+
+
+.mole {
+    position: absolute;
+    left: 50%;
+    bottom: -60%;
+    transform: translateX(-50%);
+    width: 70%;
+    max-width: 160px;
+    aspect-ratio: 1 / 1;
+    transition: bottom .18s ease;
+    pointer-events: none;
+
+}
+
+
+.hole.up .mole {
+    bottom: 8%;
+}
+
+.hole.hit .mole {
+    filter: saturate(.7) brightness(.9);
+    transform: translateX(-50%) translateY(2px) scale(.98);
+}
+
+
+.mole .head {
+    position: absolute;
+    inset: 10% 8% 28% 8%;
+    background: radial-gradient(circle at 40% 30%, #e7b98f 0%, #c48e61 55%, #a46f43 100%);
+    border-radius: 50%;
+    box-shadow: inset 0 -6px 10px rgba(0, 0, 0, .25);
+}
+
+
+.eye {
+    position: absolute;
+    top: 36%;
+    width: 10%;
+    height: 10%;
+    background: #111;
+    border-radius: 50%;
+}
+
+.eye.l {
+    left: 34%;
+}
+
+.eye.r {
+    right: 34%;
+}
+
+
+.nose {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    transform: translateX(-50%);
+    width: 22%;
+    height: 16%;
+    background: radial-gradient(circle at 50% 60%, #ffb4b4, #ff7f7f 70%, #b84d4d 100%);
+    border-radius: 40% 40% 60% 60%;
+}
+
+
+.teeth {
+    position: absolute;
+    left: 50%;
+    top: 64%;
+    transform: translateX(-50%);
+    width: 22%;
+    height: 12%;
+    background: linear-gradient(#fff, #f1f1f1);
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, .25);
+}
+
+
+.paw {
+    position: absolute;
+    bottom: -4%;
+    width: 30%;
+    height: 24%;
+    background: radial-gradient(circle at 40% 30%, #e7b98f, #a46f43 70%);
+    border-radius: 50% 50% 10% 10%;
+}
+
+.paw.left {
+    left: 6%;
+    transform: rotate(-12deg);
+}
+
+.paw.right {
+    right: 6%;
+    transform: rotate(12deg);
+}
+
+
+.msg {
+    text-align: center;
+    margin: 12px 0 4px;
+    min-height: 1.6em;
+}

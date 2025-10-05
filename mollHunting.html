@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./src/mollHunting.css">
+    <title>Title</title>
+</head>
+
+<body>
+    <main class="wrap">
+        <header class="hud">
+            <div>점수: <strong id="score">0</strong></div>
+            <div>놓침: <strong id="miss">0</strong> / 3</div>
+            <button id="startBtn" class="btn">게임 시작</button>
+        </header>
+
+        <section class="garden" id="garden" aria-label="텃밭">
+
+            <div class="hole" data-idx="0">
+                <div class="mole" aria-hidden="true">
+                    <span class="head">
+                        <i class="eye l"></i><i class="eye r"></i>
+                        <i class="nose"></i>
+                        <i class="teeth"></i>
+                    </span>
+                    <span class="paw left"></span>
+                    <span class="paw right"></span>
+                </div>
+            </div>
+            <div class="hole" data-idx="1">
+                <div class="mole"><span class="head"><i class="eye l"></i><i class="eye r"></i><i class="nose"></i><i
+                            class="teeth"></i></span><span class="paw left"></span><span class="paw right"></span></div>
+            </div>
+            <div class="hole" data-idx="2">
+                <div class="mole"><span class="head"><i class="eye l"></i><i class="eye r"></i><i class="nose"></i><i
+                            class="teeth"></i></span><span class="paw left"></span><span class="paw right"></span></div>
+            </div>
+            <div class="hole" data-idx="3">
+                <div class="mole"><span class="head"><i class="eye l"></i><i class="eye r"></i><i class="nose"></i><i
+                            class="teeth"></i></span><span class="paw left"></span><span class="paw right"></span></div>
+            </div>
+            <div class="hole" data-idx="4">
+                <div class="mole"><span class="head"><i class="eye l"></i><i class="eye r"></i><i class="nose"></i><i
+                            class="teeth"></i></span><span class="paw left"></span><span class="paw right"></span></div>
+            </div>
+            <div class="hole" data-idx="5">
+                <div class="mole"><span class="head"><i class="eye l"></i><i class="eye r"></i><i class="nose"></i><i
+                            class="teeth"></i></span><span class="paw left"></span><span class="paw right"></span></div>
+            </div>
+            <div class="hole" data-idx="6">
+                <div class="mole"><span class="head"><i class="eye l"></i><i class="eye r"></i><i class="nose"></i><i
+                            class="teeth"></i></span><span class="paw left"></span><span class="paw right"></span></div>
+            </div>
+            <div class="hole" data-idx="7">
+                <div class="mole"><span class="head"><i class="eye l"></i><i class="eye r"></i><i class="nose"></i><i
+                            class="teeth"></i></span><span class="paw left"></span><span class="paw right"></span></div>
+            </div>
+            <div class="hole" data-idx="8">
+                <div class="mole"><span class="head"><i class="eye l"></i><i class="eye r"></i><i class="nose"></i><i
+                            class="teeth"></i></span><span class="paw left"></span><span class="paw right"></span></div>
+            </div>
+        </section>
+
+        <p id="msg" class="msg" aria-live="polite"></p>
+    </main>
+    <script type="module" src="./src/mollHunting.js"></script>
+    <a href="index.html" class="return_link">⮐</a>
+</body>
+
+</html>
