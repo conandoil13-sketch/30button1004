@@ -117,7 +117,7 @@
             setMsg('좋아! 다음 라운드로 간다!');
             allowInput = false;
 
-            setTimeout(nextRound, 600);
+            setTimeout(nextRound, 1000);
             return;
         }
     }
