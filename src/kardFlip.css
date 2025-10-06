@@ -1,0 +1,143 @@
+:root {
+    --card: min(20vmin, 110px);
+    --gap: 12px;
+    --bg: #0b0f14;
+    --panel: #0f1822;
+    --ink: #cfe2ff;
+    --accent: #5fb1ff;
+    --ok: #47d17a;
+    --bad: #ff6b6b;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Noto Sans KR", sans-serif;
+}
+
+.wrap {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 16px;
+    padding: 16px;
+}
+
+.hud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    background: var(--panel);
+    border: 1px solid #203040;
+    border-radius: 12px;
+    padding: 10px 12px;
+}
+
+.hud .msg {
+    opacity: .85
+}
+
+.btn {
+    height: 36px;
+    padding: 0 14px;
+    border-radius: 10px;
+    background: linear-gradient(#203040, #0f1a28);
+    border: 1px solid #2c4056;
+    color: var(--ink);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.board {
+    margin: 0 auto;
+    display: grid;
+    gap: var(--gap);
+    grid-template-columns: repeat(4, var(--card));
+    grid-auto-rows: var(--card);
+    place-content: center;
+}
+
+
+.card {
+    position: relative;
+    width: var(--card);
+    height: var(--card);
+    perspective: 900px;
+    cursor: pointer;
+}
+
+.card.cleared {
+    pointer-events: none;
+}
+
+.card.locked {
+    pointer-events: none;
+}
+
+.card-inner {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transition: transform .35s ease;
+    border-radius: 12px;
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card.cleared .card-inner {
+    animation: vanish .38s ease forwards;
+}
+
+@keyframes vanish {
+    to {
+        transform: rotateY(180deg) scale(.6);
+        opacity: 0;
+    }
+}
+
+
+.face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    font-size: calc(var(--card) * .45);
+    user-select: none;
+}
+
+.back {
+
+    background: repeating-linear-gradient(45deg, #142030 0 10px, #0f1726 10px 20px);
+    border: 1px solid #2b3f57;
+}
+
+.front {
+
+    background: #102033;
+    border: 1px solid #305074;
+    transform: rotateY(180deg);
+}
+
+
+.card.good .front {
+    box-shadow: 0 0 0 3px var(--ok) inset;
+}
+
+.card.bad .front {
+    box-shadow: 0 0 0 3px var(--bad) inset;
+}
