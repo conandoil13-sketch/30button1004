@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./src/touchNTilt.css">
+    <title>Title</title>
+</head>
+
+<body>
+    <main class="wrap">
+        <section class="stage" id="stage" aria-label="플레이 필드">
+            <div class="ball" id="ball" aria-hidden="true"></div>
+        </section>
+
+        <section class="pad" aria-label="방향 버튼 패드">
+            <button class="btn up" data-dir="up" aria-label="위">▲</button>
+            <button class="btn down" data-dir="down" aria-label="아래">▼</button>
+            <button class="btn left" data-dir="left" aria-label="왼쪽">◀</button>
+            <button class="btn right" data-dir="right" aria-label="오른쪽">▶</button>
+        </section>
+
+        <p class="legend">여러 방향을 동시에 누르면 힘이 합쳐져요 (예: 위+오른쪽 = 대각선).</p>
+    </main>
+    <script type="module" src="./src/touchNTilt.js"></script>
+    <a href="index.html" class="return_link">⮐</a>
+</body>
+
+</html>
