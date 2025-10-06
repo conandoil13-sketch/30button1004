@@ -141,3 +141,11 @@ body {
 .card.bad .front {
     box-shadow: 0 0 0 3px var(--bad) inset;
 }
+
+.return_link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    text-decoration: none;
+}

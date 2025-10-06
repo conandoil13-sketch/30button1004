@@ -1,7 +1,7 @@
 (() => {
 
     const PAIRS = 8;
-    const LIVES_INIT = 3;
+    const LIVES_INIT = 7;
     const FLIP_BACK_DELAY = 900;
     const CLEAR_DELAY = 450;
 
