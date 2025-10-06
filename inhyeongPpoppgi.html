@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./src/inhyeongPpoppgi.css">
+    <title>Title</title>
+</head>
+
+<body>
+    <main class="wrap">
+        <section class="hud">
+            <div>🪙 코인: <span id="coins">5</span></div>
+            <div>🎯 성공: <span id="wins">0</span></div>
+            <div class="msg" id="msg">준비 완료</div>
+        </section>
+
+        <section class="stage" id="stage" aria-label="인형뽑기 무대">
+
+            <div class="dolls" id="dolls">
+
+                <div class="doll s">🧸</div>
+                <div class="doll s">🧸</div>
+                <div class="doll m">🧸</div>
+                <div class="doll s">🧸</div>
+                <div class="doll l">🧸</div>
+                <div class="doll s">🧸</div>
+                <div class="doll m">🧸</div>
+                <div class="doll s">🧸</div>
+                <div class="doll l">🧸</div>
+                <div class="doll s">🧸</div>
+                <div class="doll m">🧸</div>
+                <div class="doll s">🧸</div>
+            </div>
+
+
+            <div class="claw" id="claw" aria-hidden="true">
+                <div class="cable" id="cable"></div>
+                <div class="head" id="head">
+                    <div class="arm left"></div>
+                    <div class="arm right"></div>
+                    <div class="payload" id="payload" aria-hidden="true"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pad" aria-label="조작 패드">
+            <button class="btn left" data-dir="left" aria-label="왼쪽">◀</button>
+            <button class="btn drop" id="dropBtn" aria-label="드롭">DROP</button>
+            <button class="btn right" data-dir="right" aria-label="오른쪽">▶</button>
+        </section>
+    </main>
+    <script type="module" src="./src/inhyeongPpoppgi.js"></script>
+    <a href="index.html" class="return_link">⮐</a>
+</body>
+
+</html>

@@ -84,25 +84,25 @@ body {
 }
 
 .btn.up {
-    top: -4px;
+    top: 30px;
     left: 50%;
     transform: translate(-50%, 0);
 }
 
 .btn.down {
-    bottom: -4px;
+    bottom: 30px;
     left: 50%;
     transform: translate(-50%, 0);
 }
 
 .btn.left {
-    left: -4px;
+    left: 30px;
     top: 50%;
     transform: translate(0, -50%);
 }
 
 .btn.right {
-    right: -4px;
+    right: 30px;
     top: 50%;
     transform: translate(0, -50%);
 }
