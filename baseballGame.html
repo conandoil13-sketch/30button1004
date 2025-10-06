@@ -9,65 +9,66 @@
 </head>
 
 <body>
-    <div class="wrap">
-        <div class="small">SLG</div>
-        <div class="num mono" id="slg">.000</div>
-    </div>
-    <div>
-        <div class="small">OPS</div>
-        <div class="num mono" id="ops">.000</div>
-    </div>
-    </div>
-    <div style="margin-top:12px">
-        <div class="small">코멘트</div>
-        <div id="comment" class="code mono">—</div>
-    </div>
-    </div>
+    <header class="topbar">
+        <h1>RandomBat <span class="pill">모바일 · Math.random · 중첩 if</span></h1>
+    </header>
 
-    <div class="card span-12">
-        <h3>🧩 조건문 중첩 로직(교육용)</h3>
-        <div class="code mono" id="logicView"></div>
-        <div class="small" style="margin-top:6px">※ 너가 원하는 규칙에 맞춰 이 중첩 if 영역을 확장/치환해줄 수 있어.</div>
-    </div>
+    <main class="container">
 
-    <div class="card span-12">
-        <h3>🕹️ 타석 시뮬레이터 (중첩 if 체인)</h3>
-        <div class="row">
-            <div>
-                <label>확률: 볼%</label>
-                <input id="pBall" type="number" value="35" min="0" max="100">
+        <section class="stadium" aria-label="야구장">
+            <div class="grass"></div>
+            <div class="infield"></div>
+            <div class="foul-line left"></div>
+            <div class="foul-line right"></div>
+            <div class="bases">
+                <div class="base b1" aria-hidden="true"></div>
+                <div class="base b2" aria-hidden="true"></div>
+                <div class="base b3" aria-hidden="true"></div>
+                <div class="home" aria-hidden="true"></div>
+                <div class="mound" aria-hidden="true"></div>
             </div>
-            <div>
-                <label>확률: 스트라이크%</label>
-                <input id="pStrike" type="number" value="35" min="0" max="100">
+        </section>
+
+
+        <section class="panel" aria-label="컨트롤 패널">
+            <div class="count">
+                <div class="bubble">B <span id="b">0</span></div>
+                <div class="bubble">S <span id="s">0</span></div>
+                <button id="swing" class="btn primary" aria-label="스윙">스윙!</button>
+                <button id="auto" class="btn" aria-label="오토 실행">오토</button>
+                <button id="reset" class="btn danger" aria-label="초기화">초기화</button>
             </div>
-            <div>
-                <label>확률: 타격(컨택)%</label>
-                <input id="pContact" type="number" value="30" min="0" max="100" disabled>
+
+            <div class="stats">
+                <div class="kpi"><span>AVG</span><strong id="avg">.000</strong></div>
+                <div class="kpi"><span>OBP</span><strong id="obp">.000</strong></div>
+                <div class="kpi"><span>SLG</span><strong id="slg">.000</strong></div>
+                <div class="kpi"><span>OPS</span><strong id="ops">.000</strong></div>
             </div>
-            <div>
-                <label>타격 후: 인플레이 비중%</label>
-                <input id="pInPlay" type="number" value="60" min="0" max="100">
-            </div>
-            <div>
-                <label>세이프 확률%</label>
-                <input id="pSafe" type="number" value="35" min="0" max="100">
-            </div>
-            <div>
-                <label>안타 구성 (1B/2B/3B/HR)%</label>
-                <input id="hitMix" type="text" value="70/18/2/10">
-            </div>
-        </div>
-        <div class="btns" style="margin:12px 0">
-            <button id="swingBtn">스윙!</button>
-            <button id="newPA">타석 리셋</button>
-            <span class="pill warn" id="countBadge">B 0 | S 0</span>
-        </div>
-        <div class="small">결과 로그</div>
-        <div id="log" class="code mono" style="max-height:180px; overflow:auto">—</div>
-    </div>
-    </div>
-    </div>
+
+            <details class="totals" open>
+                <summary>누적 스탯</summary>
+                <div class="grid">
+                    <label>PA<input id="PA" type="number" readonly value="0" inputmode="numeric"></label>
+                    <label>AB<input id="AB" type="number" readonly value="0" inputmode="numeric"></label>
+                    <label>H<input id="H" type="number" readonly value="0" inputmode="numeric"></label>
+                    <label>2B<input id="Doubles" type="number" readonly value="0" inputmode="numeric"></label>
+                    <label>3B<input id="Triples" type="number" readonly value="0" inputmode="numeric"></label>
+                    <label>HR<input id="HR" type="number" readonly value="0" inputmode="numeric"></label>
+                    <label>BB<input id="BB" type="number" readonly value="0" inputmode="numeric"></label>
+                </div>
+            </details>
+
+            <pre id="log" class="log" aria-live="polite">—</pre>
+        </section>
+    </main>
+
+
+    <nav class="dock">
+        <button id="swingDock" class="dock-btn">스윙!</button>
+        <button id="autoDock" class="dock-btn">오토</button>
+        <button id="resetDock" class="dock-btn">초기화</button>
+    </nav>
     <script type="module" src="./src/baseballGame.js"></script>
     <a href="index.html" class="return_link">⮐</a>
 </body>
