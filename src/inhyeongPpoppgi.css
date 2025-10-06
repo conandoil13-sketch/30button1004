@@ -1,7 +1,7 @@
 :root {
     --stage: min(88vmin, 520px);
     --floor: 24px;
-    /* 바닥 높이(여백) */
+
     --clawW: 56px;
     --clawH: 36px;
 }
@@ -54,7 +54,7 @@ body {
     box-shadow: inset 0 8px 40px rgba(0, 0, 0, .35);
 }
 
-/* 바닥 */
+
 .stage::after {
     content: "";
     position: absolute;
@@ -66,7 +66,7 @@ body {
     border-top: 1px solid #1f2c3a;
 }
 
-/* 인형 레이어: 집게보다 위(z-index 높음) */
+
 .dolls {
     position: absolute;
     inset: 0;
@@ -74,7 +74,7 @@ body {
     pointer-events: none;
 }
 
-/* 인형: 단순히 이모지를 배치 */
+
 .doll {
     position: absolute;
     font-size: 28px;
@@ -94,13 +94,13 @@ body {
     transform: scale(1.2);
 }
 
-/* 집게 레이어 */
+
 .claw {
     position: absolute;
     left: 0;
     top: 0;
     z-index: 2;
-    /* JS가 transform으로 위치 이동 */
+
 }
 
 .cable {
@@ -119,8 +119,8 @@ body {
     width: var(--clawW);
     height: var(--clawH);
     left: 50%;
+    top: 0;
     transform: translateX(-50%);
-    bottom: -2px;
     background: linear-gradient(#1e2d3c, #0f1a25);
     border: 1px solid #365069;
     border-radius: 10px;
@@ -150,14 +150,14 @@ body {
     transform: translateY(-50%) rotate(18deg);
 }
 
-/* 집게 안의 페이로드(성공 시 인형 이모지 등장) */
+
 .payload {
     font-size: 20px;
     transform: translateY(2px);
     filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .5));
 }
 
-/* 패드 */
+
 .pad {
     display: flex;
     gap: 10px;
@@ -178,7 +178,7 @@ body {
     user-select: none;
     -webkit-user-select: none;
     touch-action: none;
-    /* 더블탭 확대/스크롤 방지 */
+
 }
 
 .btn:active,
