@@ -1,19 +1,12 @@
 
 
-
 const state = {
     massL: 0, massR: 0,
     blocksL: [], blocksR: [],
-    angle: 0,
-    angVel: 0,
-    target: 0,
-
-    stiffness: 6.0,
-    damping: 1.6,
-    torqueScale: 0.06,
-    maxDeg: 18,
-    lastTime: performance.now(),
-    running: true,
+    angle: 0, angVel: 0, target: 0,
+    stiffness: 6.0, damping: 1.6,
+    torqueScale: 0.06, maxDeg: 18,
+    lastTime: performance.now(), running: true,
     sizeAffectsMass: false,
 };
 
@@ -21,14 +14,12 @@ const state = {
 const panL = document.getElementById('panL');
 const panR = document.getElementById('panR');
 const beam = document.getElementById('beam');
-
 const addL = document.getElementById('addL');
 const removeL = document.getElementById('removeL');
 const addR = document.getElementById('addR');
 const removeR = document.getElementById('removeR');
 const resetBtn = document.getElementById('reset');
 const sizeAffectsMassChk = document.getElementById('sizeAffectsMass');
-
 const massLEl = document.getElementById('massL');
 const massREl = document.getElementById('massR');
 const countLEl = document.getElementById('countL');
@@ -41,10 +32,9 @@ const rad2deg = r => r * 180 / Math.PI;
 const deg2rad = d => d * Math.PI / 180;
 
 
-function createBlock() {
+function createBlock(side) {
     const div = document.createElement('div');
     div.className = 'block pop';
-
 
     const w = 28 + Math.floor(Math.random() * 28);
     const h = 28 + Math.floor(Math.random() * 28);
@@ -52,7 +42,11 @@ function createBlock() {
     div.style.height = h + 'px';
 
 
-    const offset = (Math.random() * 100 - 50);
+    const panEl = side === 'L' ? panL : panR;
+    const panW = panEl.clientWidth || 200;
+    const pad = 8;
+    const half = Math.max(0, (panW / 2) - (w / 2) - pad);
+    const offset = (Math.random() * 2 - 1) * half; f
     div.style.left = `calc(50% + ${offset}px)`;
 
 
@@ -67,7 +61,7 @@ function createBlock() {
 
 
 function addBlock(side) {
-    const block = createBlock();
+    const block = createBlock(side);
     const m = parseFloat(block.dataset.mass);
     if (side === 'L') {
         panL.appendChild(block);
@@ -80,7 +74,6 @@ function addBlock(side) {
     }
     updateHUD();
 }
-
 function removeBlock(side) {
     if (side === 'L' && state.blocksL.length) {
         const b = state.blocksL.pop();
@@ -94,6 +87,7 @@ function removeBlock(side) {
     updateHUD();
 }
 
+
 function updateHUD() {
     massLEl.textContent = state.massL.toFixed(2);
     massREl.textContent = state.massR.toFixed(2);
@@ -105,28 +99,21 @@ function updateHUD() {
 
 function computeTargetAngle() {
     const diff = state.massL - state.massR;
-
-    let target = -(diff) * state.torqueScale;
     const maxRad = deg2rad(state.maxDeg);
-    state.target = clamp(target, -maxRad, maxRad);
+    state.target = clamp(-(diff) * state.torqueScale, -maxRad, maxRad);
 }
 
 
 function step(dt) {
     computeTargetAngle();
-
-    const err = state.target - state.angle;              // 목표와의 오차
-    const acc = state.stiffness * err - state.damping * state.angVel; // 각가속도
-
+    const err = state.target - state.angle;
+    const acc = state.stiffness * err - state.damping * state.angVel;
     state.angVel += acc * dt;
     state.angle += state.angVel * dt;
 
-
     if (Math.abs(state.angVel) < 0.00005 && Math.abs(err) < deg2rad(0.02)) {
-        state.angVel = 0;
-        state.angle = state.target;
+        state.angVel = 0; state.angle = state.target;
     }
-
 
     beam.style.transform = `translate(-50%,-50%) rotate(${rad2deg(state.angle)}deg)`;
     updateHUD();
@@ -145,24 +132,18 @@ addL.addEventListener('click', () => addBlock('L'));
 addR.addEventListener('click', () => addBlock('R'));
 removeL.addEventListener('click', () => removeBlock('L'));
 removeR.addEventListener('click', () => removeBlock('R'));
-
 resetBtn.addEventListener('click', () => {
-
     [...state.blocksL, ...state.blocksR].forEach(b => b.remove());
-    state.blocksL.length = 0;
-    state.blocksR.length = 0;
+    state.blocksL.length = 0; state.blocksR.length = 0;
     state.massL = 0; state.massR = 0;
-
-
     state.target = 0; state.angle = 0; state.angVel = 0;
     beam.style.transform = 'translate(-50%,-50%) rotate(0deg)';
     updateHUD();
 });
-
 sizeAffectsMassChk.addEventListener('change', (e) => {
     state.sizeAffectsMass = e.target.checked;
 });
 
 
 updateHUD();
-requestAnimationFrame((t) => { state.lastTime = t; loop(t); });
+requestAnimationFrame(t => { state.lastTime = t; loop(t); });
