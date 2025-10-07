@@ -249,6 +249,23 @@ body {
     animation: pop .18s ease-out both;
 }
 
+.stage {
+    position: relative;
+}
+
+.scale-wrap {
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+.controls {
+    position: relative;
+    z-index: 5;
+    pointer-events: auto;
+}
+
+
 .return_link {
     position: fixed;
     top: 20px;
