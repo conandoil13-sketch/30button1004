@@ -1,4 +1,6 @@
 
+
+
 const state = {
     massL: 0, massR: 0,
     blocksL: [], blocksR: [],
@@ -66,14 +68,15 @@ function createBlock() {
 
 function addBlock(side) {
     const block = createBlock();
+    const m = parseFloat(block.dataset.mass);
     if (side === 'L') {
         panL.appendChild(block);
         state.blocksL.push(block);
-        state.massL += parseFloat(block.dataset.mass);
+        state.massL += m;
     } else {
         panR.appendChild(block);
         state.blocksR.push(block);
-        state.massR += parseFloat(block.dataset.mass);
+        state.massR += m;
     }
     updateHUD();
 }
@@ -102,20 +105,18 @@ function updateHUD() {
 
 function computeTargetAngle() {
     const diff = state.massL - state.massR;
-    let target = diff * state.torqueScale;
+
+    let target = -(diff) * state.torqueScale;
     const maxRad = deg2rad(state.maxDeg);
-    target = clamp(target, -maxRad, maxRad);
-    state.target = target;
+    state.target = clamp(target, -maxRad, maxRad);
 }
 
 
 function step(dt) {
-
     computeTargetAngle();
 
-
-    const err = state.target - state.angle;
-    const acc = state.stiffness * err - state.damping * state.angVel;
+    const err = state.target - state.angle;              // 목표와의 오차
+    const acc = state.stiffness * err - state.damping * state.angVel; // 각가속도
 
     state.angVel += acc * dt;
     state.angle += state.angVel * dt;
@@ -127,13 +128,13 @@ function step(dt) {
     }
 
 
-    beam.style.transform = `translate(-50%,-50%) rotate(${-rad2deg(state.angle)}deg)`;
+    beam.style.transform = `translate(-50%,-50%) rotate(${rad2deg(state.angle)}deg)`;
     updateHUD();
 }
 
 
 function loop(now) {
-    const dt = Math.min(0.033, (now - state.lastTime) / 1000); // 30fps 상한
+    const dt = Math.min(0.033, (now - state.lastTime) / 1000);
     state.lastTime = now;
     if (state.running) step(dt);
     requestAnimationFrame(loop);
@@ -148,8 +149,10 @@ removeR.addEventListener('click', () => removeBlock('R'));
 resetBtn.addEventListener('click', () => {
 
     [...state.blocksL, ...state.blocksR].forEach(b => b.remove());
-    state.blocksL.length = 0; state.blocksR.length = 0;
+    state.blocksL.length = 0;
+    state.blocksR.length = 0;
     state.massL = 0; state.massR = 0;
+
 
     state.target = 0; state.angle = 0; state.angVel = 0;
     beam.style.transform = 'translate(-50%,-50%) rotate(0deg)';
@@ -158,13 +161,6 @@ resetBtn.addEventListener('click', () => {
 
 sizeAffectsMassChk.addEventListener('change', (e) => {
     state.sizeAffectsMass = e.target.checked;
-});
-
-
-['pointerdown', 'touchstart'].forEach(ev => {
-    document.body.addEventListener(ev, (e) => {
-        if ((e.target instanceof HTMLElement) && e.target.classList.contains('btn'));
-    }, { passive: false });
 });
 
 
