@@ -247,3 +247,11 @@ body {
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     color: var(--muted)
 }
+
+.return_link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    text-decoration: none;
+}
