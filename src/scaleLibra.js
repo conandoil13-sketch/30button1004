@@ -163,7 +163,7 @@ sizeAffectsMassChk.addEventListener('change', (e) => {
 
 ['pointerdown', 'touchstart'].forEach(ev => {
     document.body.addEventListener(ev, (e) => {
-        if ((e.target instanceof HTMLElement) && e.target.classList.contains('btn')) e.preventDefault();
+        if ((e.target instanceof HTMLElement) && e.target.classList.contains('btn'));
     }, { passive: false });
 });
 
