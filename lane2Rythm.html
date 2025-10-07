@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./src/lane2Rythm.css">
+    <title>Title</title>
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="scorebox">
+            <div id="score" class="score">000000</div>
+            <div id="judge" class="judge"></div>
+        </div>
+        <div class="controls">
+            <button id="startBtn" class="btn">시작</button>
+            <button id="stopBtn" class="btn ghost">정지</button>
+        </div>
+    </header>
+
+    <main class="stage-wrap">
+        <div id="stage" class="stage" aria-label="리듬게임 스테이지">
+
+            <div id="hitline" class="hitline"></div>
+
+
+            <div class="lane lane-left" id="laneL" data-lane="0" aria-label="왼쪽 레인"></div>
+            <div class="lane lane-right" id="laneR" data-lane="1" aria-label="오른쪽 레인"></div>
+        </div>
+    </main>
+
+    <footer class="foot">
+        <small>터치/클릭으로 레인을 타격하세요. Perfect/Good/Miss 판정 · 네온 팡 이펙트</small>
+    </footer>
+    <a href="index.html" class="return_link">⮐</a>
+    <script type="module" src="./src/lane2Rythm.js"></script>
+</body>
+
+</html>
