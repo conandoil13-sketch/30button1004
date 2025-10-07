@@ -112,3 +112,34 @@ body {
 .vert.pop {
     transform: scale(1.3);
 }
+
+.hud .spacer {
+    flex: 1 1 100%;
+}
+
+
+#plus {
+    order: 2;
+}
+
+#minus {
+    order: 3;
+}
+
+.hud .spacer {
+    order: 1;
+}
+
+#plus {
+    margin-left: auto;
+}
+
+#minus {}
+
+.return_link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    text-decoration: none;
+}
