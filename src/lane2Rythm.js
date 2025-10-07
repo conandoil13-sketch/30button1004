@@ -26,10 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const HIT_Y = () => hitline.getBoundingClientRect().top - stage.getBoundingClientRect().top;
     const H = () => stage.clientHeight;
 
+    const IS_COARSE = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
 
     const PERFECT_W = 36;
     const GOOD_W = 85;
-
+    if (IS_COARSE) {
+        PERFECT_W *= 1.5;  // 24→36
+        GOOD_W *= 1.5;  // 60→90
+    }
 
     const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
     const zfill6 = (n) => n.toString().padStart(6, '0');
