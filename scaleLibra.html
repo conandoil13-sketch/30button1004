@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./src/scaleLibra.css">
+    <title>Title</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <h1>⚖️ 시소/저울 — 미니 물리 시뮬레이터</h1>
+        <p class="sub">스프링-댐핑 기반의 가벼운 물리 구현(토크·감쇠·한계각 클램프)</p>
+    </header>
+
+    <main class="layout">
+        <aside class="panel controls">
+            <h2>🧪 컨트롤</h2>
+            <div class="row">
+                <button id="addL" class="btn">⬅️ 왼쪽 +</button>
+                <button id="removeL" class="btn ghost">왼쪽 -</button>
+            </div>
+            <div class="row">
+                <button id="addR" class="btn">오른쪽 + ➡️</button>
+                <button id="removeR" class="btn ghost">오른쪽 -</button>
+            </div>
+            <div class="row">
+                <label class="chk">
+                    <input id="sizeAffectsMass" type="checkbox" />
+                    블록 크기가 무게에 영향(면적 비례)
+                </label>
+            </div>
+            <div class="row">
+                <button id="reset" class="btn danger">초기화</button>
+            </div>
+
+            <div class="stats">
+                <div>왼쪽: <b id="massL">0</b> kg / <span id="countL">0</span> 개</div>
+                <div>오른쪽: <b id="massR">0</b> kg / <span id="countR">0</span> 개</div>
+                <div>각도: <b id="deg">0.0°</b></div>
+            </div>
+
+            <details class="help">
+                <summary>설명 보기</summary>
+                <ul>
+                    <li>토크 = (왼쪽질량 − 오른쪽질량) × 레버암(동일) ⇒ 목표각 계산</li>
+                    <li>회전은 스프링(탄성) + 댐핑(마찰)으로 부드럽게 수렴</li>
+                    <li>최대 기울기 각도는 ±18°로 제한(클램프)</li>
+                </ul>
+            </details>
+        </aside>
+
+        <section class="panel stage">
+            <div class="scale-wrap">
+
+                <div class="pivot"></div>
+
+
+                <div id="beam" class="beam">
+
+                    <div class="pan pan-left" id="panL"></div>
+                    <div class="pan pan-right" id="panR"></div>
+                </div>
+
+
+                <div class="stand"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <small>© 2025 수호 | 순수 JS/HTML/CSS — 외부 물리엔진 없이 경량 시뮬레이션</small>
+    </footer>
+    <script type="module" src="./src/scaleLibra.js"></script>
+    <a href="index.html" class="return_link">⮐</a>
+</body>
+
+</html>

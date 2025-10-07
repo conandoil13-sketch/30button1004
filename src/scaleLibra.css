@@ -1,0 +1,236 @@
+:root {
+    --bg: #0f1115;
+    --ink: #e9edf6;
+    --muted: #a1a8ba;
+    --panel: #161b24;
+    --line: #222a3a;
+    --accent: #7ee081;
+    --danger: #ff6b6b;
+    --beam: #222b3f;
+    --pan: #0e1422;
+    --block: #1b2436;
+    --blockLine: #2a3550;
+    --radius: 16px;
+    --gap: 16px;
+    --shadow: 0 14px 36px rgba(0, 0, 0, .28);
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, "Noto Sans KR", Apple SD Gothic Neo, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(1000px 600px at 70% -10%, #1a2130 0%, #0f1115 55%, #0c0d11 100%);
+    color: var(--ink);
+}
+
+.site-header {
+    padding: 22px 20px;
+    border-bottom: 1px solid var(--line)
+}
+
+.site-header h1 {
+    margin: 0 0 6px;
+    font-size: 22px
+}
+
+.site-header .sub {
+    margin: 0;
+    color: var(--muted)
+}
+
+.site-footer {
+    padding: 12px 20px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    text-align: center
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 18px;
+    padding: 18px;
+    min-height: calc(100vh - 110px);
+}
+
+@media (max-width: 900px) {
+    .layout {
+        grid-template-columns: 1fr
+    }
+}
+
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow)
+}
+
+.controls {
+    padding: 16px
+}
+
+.stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px
+}
+
+.btn {
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: #1a2130;
+    border: 1px solid #2a3448;
+    color: var(--ink);
+    cursor: pointer
+}
+
+.btn.ghost {
+    background: transparent
+}
+
+.btn.danger {
+    background: #3a1b1b;
+    border-color: #7d3c3c
+}
+
+.chk {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted)
+}
+
+.stats {
+    margin-top: 12px;
+    color: var(--muted);
+    line-height: 1.6
+}
+
+.help {
+    margin-top: 10px;
+    color: var(--muted)
+}
+
+.scale-wrap {
+    width: min(900px, 90vw);
+    height: min(520px, 70vh);
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.stand {
+    position: absolute;
+    width: 92px;
+    height: 160px;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(#1a2130, #111726);
+    border: 1px solid #2a3048;
+    border-radius: 24px 24px 12px 12px;
+    box-shadow: inset 0 12px 24px rgba(255, 255, 255, .03);
+}
+
+
+.pivot {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #7ee081;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    box-shadow: 0 0 0 4px rgba(126, 224, 129, .15), 0 0 20px rgba(126, 224, 129, .25);
+}
+
+
+.beam {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 80%;
+    height: 16px;
+    background: linear-gradient(180deg, #2a334b, #1c2437);
+    border: 1px solid #2a3550;
+    border-radius: 12px;
+    transform-origin: 50% 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .35);
+}
+
+
+.pan {
+    position: absolute;
+    top: 50%;
+    width: 210px;
+    height: 26px;
+    background: linear-gradient(180deg, #0e1422, #0b0f19);
+    border: 1px solid #23304a;
+    border-radius: 12px;
+    transform: translateY(-50%);
+    box-shadow: inset 0 -8px 16px rgba(0, 0, 0, .3);
+    overflow: visible;
+}
+
+.pan-left {
+    left: 4%;
+}
+
+.pan-right {
+    right: 4%;
+}
+
+
+.block {
+    position: absolute;
+    bottom: 28px;
+
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(180deg, #26324a, #1b2336);
+    border: 1px solid var(--blockLine);
+    border-radius: 8px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .35);
+}
+
+
+@keyframes pop {
+    0% {
+        transform: translate(-50%, -40px) scale(.9);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(-50%, 0) scale(1);
+        opacity: 1;
+    }
+}
+
+.block.pop {
+    animation: pop .18s ease-out both;
+}
