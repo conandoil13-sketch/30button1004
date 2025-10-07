@@ -127,7 +127,7 @@ function step(dt) {
     }
 
 
-    beam.style.transform = `translate(-50%,-50%) rotate(${rad2deg(state.angle)}deg)`;
+    beam.style.transform = `translate(-50%,-50%) rotate(${-rad2deg(state.angle)}deg)`;
     updateHUD();
 }
 
