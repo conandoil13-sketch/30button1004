@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./src/polyMaker.css">
+    <title>Title</title>
+</head>
+
+<body>
+    <main class="wrap">
+        <header class="hud">
+            <div>🔺 꼭짓점: <strong id="count">3</strong></div>
+            <div class="hint">(+ / – 버튼을 눌러 점을 조절)</div>
+            <div class="spacer"></div>
+            <button id="minus" class="btn">–</button>
+            <button id="plus" class="btn primary">+</button>
+        </header>
+
+        <section class="stage">
+
+            <svg id="svg" viewBox="0 0 500 500" aria-label="다각형">
+                <defs>
+                    <radialGradient id="fillGrad" cx="50%" cy="40%">
+                        <stop offset="0%" stop-color="#5fb1ff" stop-opacity="0.35" />
+                        <stop offset="100%" stop-color="#5fb1ff" stop-opacity="0.12" />
+                    </radialGradient>
+                </defs>
+                <g id="layer-poly"></g>
+                <g id="layer-spokes"></g>
+                <g id="layer-verts"></g>
+            </svg>
+        </section>
+    </main>
+
+    <script type="module" src="./src/polyMaker.js">
+    </script>
+    <a href="index.html" class="return_link">⮐</a>
+</body>
+
+</html>

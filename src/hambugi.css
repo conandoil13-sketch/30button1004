@@ -284,3 +284,11 @@ body {
         order: 1;
     }
 }
+
+.return_link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    text-decoration: none;
+}
