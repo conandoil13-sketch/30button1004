@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const H = () => stage.clientHeight;
 
 
-    const PERFECT_W = 18;
-    const GOOD_W = 42;
+    const PERFECT_W = 28;
+    const GOOD_W = 60;
 
 
     const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
