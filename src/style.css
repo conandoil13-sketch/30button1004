@@ -76,3 +76,12 @@ body {
         font-size: clamp(20px, 6vw, 32px);
     }
 }
+
+.helpers_link {
+    position: fixed;
+    bottom: 1%;
+    right: 1%;
+    background-color: aliceblue;
+    padding: 0.4%;
+    border-radius: 5px;
+}

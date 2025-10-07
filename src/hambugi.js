@@ -1,6 +1,5 @@
 (() => {
-    // ===== 재료 정의 =====
-    // id: 고정키, name: 표시, cls: 색상 클래스, emoji: 미니/슬라이스 라벨
+
     const ING = [
         { id: 'bot', name: '바닥빵', cls: 'i-bot', emoji: '🫓' },
         { id: 'patty', name: '패티', cls: 'i-patty', emoji: '🥩' },
@@ -15,7 +14,7 @@
     ];
     const byId = Object.fromEntries(ING.map(x => [x.id, x]));
 
-    // ===== DOM =====
+
     const msgEl = document.getElementById('msg');
     const targetLenEl = document.getElementById('targetLen');
     const stackLenEl = document.getElementById('stackLen');
@@ -29,12 +28,12 @@
     const accuracyEl = document.getElementById('accuracy');
     const scoreTable = document.getElementById('scoreTable');
 
-    // ===== 상태 =====
-    const MAX_LAYERS = 10;
-    let order = [];  // 정답 (아래→위)
-    let stack = [];  // 내가 쌓은 것 (아래→위)
 
-    // ===== 유틸 =====
+    const MAX_LAYERS = 10;
+    let order = [];
+    let stack = [];
+
+
     const rnd = (n) => Math.floor(Math.random() * n);
     const choice = (arr) => arr[rnd(arr.length)];
     const setMsg = (t) => msgEl.textContent = t;
@@ -45,25 +44,25 @@
 
     function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = rnd(i + 1);[a[i], a[j]] = [a[j], a[i]]; } return a; }
 
-    // ===== 주문(정답) 생성 =====
+
     function makeOrder() {
-        // 길이: 3~10층, 항상 빵 아래/위 포함
-        const len = 3 + rnd(8); // 3..10
+
+        const len = 3 + rnd(8);
         const middleCount = len - 2;
 
         const pool = ING.filter(x => x.id !== 'bot' && x.id !== 'top');
         const mids = [];
         for (let i = 0; i < middleCount; i++) {
-            // 중복 허용(실제 레시피처럼 치즈 2장 같은 케이스)
+
             mids.push(choice(pool).id);
         }
         return ['bot', ...mids, 'top'];
     }
 
-    // ===== 렌더링 =====
+
     function renderOrder() {
         orderList.innerHTML = '';
-        // 미니 스택은 아래→위 순서로 보이도록 column-reverse, 따라서 그대로 append 해도 됨.
+
         order.forEach(id => {
             const ing = byId[id];
             const li = document.createElement('li');
@@ -75,7 +74,7 @@
 
     function renderStack() {
         stackEl.innerHTML = '';
-        // 각 슬라이스를 절대배치: 아래층일수록 Y가 낮고 zIndex도 낮게
+
         stack.forEach((id, i) => {
             const ing = byId[id];
             const div = document.createElement('div');
@@ -84,7 +83,7 @@
             div.style.zIndex = 10 + i;
             div.innerHTML = `<span>${ing.emoji}</span> <span>${ing.name}</span>`;
             stackEl.appendChild(div);
-            // 살짝 통통 튀는 느낌
+
             requestAnimationFrame(() => div.classList.add('bump'));
             setTimeout(() => div.classList.remove('bump'), 120);
         });
@@ -96,7 +95,7 @@
 
     function renderPalette() {
         paletteEl.innerHTML = '';
-        // 바닥/윗빵도 선택 가능하게 해두되, 정답 비교에서 위치만 본다.
+
         ING.forEach(ing => {
             const b = document.createElement('button');
             b.className = 'ing-btn';
@@ -109,7 +108,7 @@
         });
     }
 
-    // ===== 상호작용 =====
+
     function addLayer(id) {
         if (stack.length >= MAX_LAYERS) {
             setMsg('최대 10층까지!');
@@ -118,7 +117,7 @@
         stack.push(id);
         renderStack();
         setMsg('제출 또는 계속 쌓기');
-        scorePanel.classList.add('hidden'); // 새로 쌓으면 이전 점수판 숨김
+        scorePanel.classList.add('hidden');
     }
 
     function clearStack() {
@@ -131,11 +130,11 @@
             setMsg('먼저 쌓아보자!');
             return;
         }
-        // 층수 다를 수 있으니, 정답 길이 기준으로 채점
+
         const rows = Math.max(order.length, stack.length);
         let ok = 0;
 
-        // 점수표 헤더
+
         scoreTable.innerHTML = `
       <thead>
         <tr>
@@ -188,11 +187,10 @@
         updateHUD();
     }
 
-    // ===== 버튼 =====
+
     submitBtn.addEventListener('click', submit);
     nextBtn.addEventListener('click', nextBurger);
 
-    // ===== 시작 =====
     renderPalette();
     nextBurger();
 })();
