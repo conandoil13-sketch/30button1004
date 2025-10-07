@@ -1,0 +1,159 @@
+:root {
+    --bg: #0f1115;
+    --panel: #161b24;
+    --line: #222a3a;
+    --ink: #e9edf6;
+    --muted: #a1a8ba;
+    --accent: #7ee081;
+    --danger: #ff6b6b;
+    --warn: #ffb86b;
+    --radius: 16px;
+    --shadow: 0 12px 28px rgba(0, 0, 0, .28);
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, "Noto Sans KR", Apple SD Gothic Neo, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(1100px 700px at 70% -10%, #1a2130 0%, #0f1115 55%, #0c0d11 100%);
+    color: var(--ink);
+}
+
+.main {
+    max-width: 900px;
+    margin: 32px auto;
+    padding: 0 16px;
+    display: grid;
+    gap: 16px;
+}
+
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 16px;
+}
+
+h1 {
+    margin: 0 0 6px;
+    font-size: 22px
+}
+
+.sub {
+    margin: 0;
+    color: var(--muted)
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap
+}
+
+.btn {
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: #1a2130;
+    border: 1px solid #2a3448;
+    color: var(--ink);
+    cursor: pointer
+}
+
+.btn:disabled {
+    opacity: .5;
+    cursor: not-allowed
+}
+
+.btn.primary {
+    background: linear-gradient(180deg, #26324a, #1b2336);
+    border-color: #3a4a6a
+}
+
+.btn.danger {
+    background: #3a1b1b;
+    border-color: #7d3c3c
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid #2a3448;
+    background: #101523;
+    color: var(--ink);
+    font-size: 13px
+}
+
+.mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace
+}
+
+.bignum {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: .5px
+}
+
+.note {
+    color: var(--muted);
+    font-size: 13px
+}
+
+.log {
+    height: 220px;
+    overflow: auto;
+    border: 1px dashed #2a3448;
+    border-radius: 12px;
+    padding: 10px;
+    background: #0f1420;
+}
+
+.kv {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap
+}
+
+.kv div {
+    background: #101523;
+    border: 1px solid #2a3448;
+    border-radius: 10px;
+    padding: 8px 10px
+}
+
+.hint {
+    color: #a6e0ad
+}
+
+.warn {
+    color: var(--warn)
+}
+
+.lose {
+    color: var(--danger)
+}
+
+.win {
+    color: var(--accent)
+}
+
+.return_link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    text-decoration: none;
+}

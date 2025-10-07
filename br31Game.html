@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./src/br31Game.css">
+    <title>Title</title>
+</head>
+
+<body>
+    <main class="main">
+        <section class="panel">
+            <h1>🍨 베스킨라빈스 31</h1>
+            <p class="sub">플레이어 vs CPU · 한 턴에 최대 3개까지. 31을 말하면 <b>지는</b> 규칙!</p>
+        </section>
+
+
+        <section class="panel">
+            <div class="row">
+                <div class="badge">현재</div>
+                <div id="status" class="bignum">게임 시작!</div>
+            </div>
+            <div class="kv" style="margin-top:10px">
+                <div id="yourCount" class="mono">이번 턴 남은 말 수: 3</div>
+                <div id="cpuHint" class="mono hint">CPU 안정수 목표: 4</div>
+            </div>
+            <p class="note">설명: 한 번에 1~3개의 숫자를 “하나씩” 말할 수 있어요. 1~2개만 말했으면 <b>차례 넘기기</b>로 턴을 끝낼 수 있고, 3개를 말하면 자동으로 넘어갑니다.
+                31을 말하는 쪽이 패배!</p>
+        </section>
+
+
+        <section class="panel">
+            <div class="row">
+                <button id="sayOne" class="btn primary">숫자 하나 말하기</button>
+                <button id="passTurn" class="btn">차례 넘기기</button>
+                <button id="resetGame" class="btn danger">다시 시작</button>
+            </div>
+        </section>
+
+
+        <section class="panel">
+            <div class="row" style="justify-content:space-between; align-items:center">
+                <div class="badge">기록</div>
+                <span class="note">아래에 플레이어/CPU가 말한 숫자가 순서대로 쌓여요.</span>
+            </div>
+            <div id="history" class="log"></div>
+        </section>
+    </main>
+    <script type="module" src="./src/br31Game.js"></script>
+    <a href="index.html" class="return_link">⮐</a>
+</body>
+
+</html>
