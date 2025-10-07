@@ -252,3 +252,14 @@ body {
 .burst {
     will-change: transform, top;
 }
+
+.stage,
+.lane {
+    touch-action: none;
+
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior: contain;
+
+}

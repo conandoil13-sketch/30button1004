@@ -1,5 +1,37 @@
+(function lockZoomGlobally() {
 
+    document.addEventListener('touchstart', (e) => {
+        if (e.touches && e.touches.length > 1) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', (e) => {
+        const now = Date.now();
+        if (now - lastTouchEnd <= 300) {
+            e.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, { passive: false });
+
+
+    ['gesturestart', 'gesturechange', 'gestureend'].forEach(type => {
+        document.addEventListener(type, (e) => e.preventDefault(), { passive: false });
+    });
+
+
+    document.addEventListener('dblclick', (e) => {
+        e.preventDefault();
+    }, { passive: false });
+
+
+    document.addEventListener('wheel', (e) => {
+        if (e.ctrlKey) e.preventDefault();
+    }, { passive: false });
+})();
 document.addEventListener('DOMContentLoaded', () => {
+
     const stage = document.getElementById('stage');
     const laneL = document.getElementById('laneL');
     const laneR = document.getElementById('laneR');
@@ -30,14 +62,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let PERFECT_W = 24;
     let GOOD_W = 60;
-    if (IS_COARSE) { // 모바일 판정 완화
-        PERFECT_W *= 1.5; // 24 → 36
-        GOOD_W *= 1.5;    // 60 → 90
-    }
+    if (IS_COARSE) { PERFECT_W *= 1.0; GOOD_W *= 1.4; }
 
+
+    const LATE_MS = IS_COARSE ? 180 : 140;
 
     const zfill6 = (n) => n.toString().padStart(6, '0');
-    const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
     const setScore = (delta) => {
         state.score = Math.max(0, Math.round(state.score + delta));
         scoreEl.textContent = zfill6(state.score);
@@ -57,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function spawnNote() {
         if (!state.running) return;
+
         const lane = Math.random() < 0.5 ? 0 : 1;
         const el = document.createElement('div');
         el.className = `note ${COLORS[lane]}`;
@@ -68,7 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const varr = IS_COARSE ? 120 : 160;
         const speed = base + Math.random() * varr;
 
-        state.notes.push({ lane, y: -24, speed, el, hit: false });
+        state.notes.push({ lane, y: -24, speed, el, hit: false, crossedAt: null });
+
+
         const delay = 650 + Math.random() * 700;
         state.spawnTimer = setTimeout(spawnNote, delay);
     }
@@ -77,20 +110,36 @@ document.addEventListener('DOMContentLoaded', () => {
     function loop(now) {
         const dt = Math.min(0.03, (now - state.lastT) / 1000);
         state.lastT = now;
+
         if (state.running) {
             const hitY = HIT_Y();
+
             for (let i = state.notes.length - 1; i >= 0; i--) {
                 const n = state.notes[i];
                 n.y += n.speed * dt;
                 n.el.style.top = `${n.y}px`;
 
-                if (n.y - hitY > GOOD_W + 28 && !n.hit) {
-                    n.hit = true;
+
+                const center = n.y + 9;
+
+
+                if (n.crossedAt == null && center >= hitY) {
+                    n.crossedAt = performance.now();
+                }
+
+
+                if (!n.hit && n.crossedAt != null && (performance.now() - n.crossedAt) > LATE_MS) {
                     setJudge('miss');
-                    state.combo = 0; setScore(-20);
+                    state.combo = 0;
+                    setScore(-20);
+                    n.hit = true;
                     n.el.remove();
                     state.notes.splice(i, 1);
-                } else if (n.y > H() + 40) {
+                    continue;
+                }
+
+
+                if (n.y > H() + 40) {
                     n.el.remove();
                     state.notes.splice(i, 1);
                 }
@@ -104,7 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!state.running) return;
         const hitY = HIT_Y();
 
-        const SEARCH_W = Math.max(GOOD_W * 1.6, 120); // 탐색 범위 확장
+
+        const SEARCH_W = Math.max(GOOD_W * 1.6, 120);
         let best = null, bestDist = Infinity;
 
         for (const n of state.notes) {
@@ -115,8 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (!best) {
-            setJudge('miss'); state.combo = 0; setScore(-5);
-            makeBurst(lane, true);
+            setJudge('miss'); state.combo = 0; setScore(-5); makeBurst(lane, true);
             return;
         }
 
@@ -124,20 +173,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const effPerfect = PERFECT_W + best.speed * 0.04;
         const effGood = GOOD_W + best.speed * 0.06;
 
-        if (bestDist <= effGood) {
+
+        const withinTimeGrace = best.crossedAt != null && (performance.now() - best.crossedAt) <= LATE_MS;
+
+        if (bestDist <= effGood || withinTimeGrace) {
             const kind = (bestDist <= effPerfect) ? 'perfect' : 'good';
             setJudge(kind);
-            if (kind === 'perfect') state.combo += 1; else state.combo = 0;
-            const base = (kind === 'perfect') ? 100 : 50;
+            if (kind === 'perfect') { state.combo += 1; } else { state.combo = 0; }
+            const base = (kind === 'perfect') ? 100 : 60; // 늦은 Good도 60점
             const bonus = (kind === 'perfect') ? state.combo * 5 : 0;
             setScore(base + bonus);
+
             makeBurst(lane);
             best.hit = true;
             best.el.remove();
             state.notes = state.notes.filter(n => n !== best);
         } else {
-            setJudge('miss'); state.combo = 0; setScore(-5);
-            makeBurst(lane, true);
+            setJudge('miss'); state.combo = 0; setScore(-5); makeBurst(lane, true);
         }
     }
 
@@ -145,10 +197,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function makeBurst(lane, weak = false) {
         const b = document.createElement('div');
         b.className = `burst ${COLORS[lane]}`;
-        const y = HIT_Y();
-        b.style.top = `${y}px`;
+        b.style.top = `${HIT_Y()}px`;
         LANES[lane].appendChild(b);
-        if (weak) b.style.transform = 'translate(-50%,-50%) scale(.55)';
+        if (weak) b.style.transform = 'translate(-50%, -50%) scale(.55)';
         requestAnimationFrame(() => b.classList.add('run'));
         setTimeout(() => b.remove(), 240);
     }
