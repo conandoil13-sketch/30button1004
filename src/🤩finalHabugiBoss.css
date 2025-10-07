@@ -1,0 +1,249 @@
+:root {
+    --bg: #0f1115;
+    --ink: #e9ecf2;
+    --muted: #a0a7b7;
+    --panel: #161b24;
+    --line: #222a3a;
+    --accent: #7ee081;
+    --warn: #ffb86b;
+    --danger: #ff6b6b;
+    --chip: #1c2230;
+    --chipLine: #2a3448;
+    --radius: 16px;
+    --gap: 14px;
+    --shadow: 0 12px 30px rgba(0, 0, 0, .25);
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, "Noto Sans KR", Apple SD Gothic Neo, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(1200px 700px at 70% -10%, #1a2130 0%, #0f1115 55%, #0c0d11 100%);
+    color: var(--ink);
+}
+
+.site-header {
+    padding: 22px 20px;
+    border-bottom: 1px solid var(--line);
+}
+
+.site-header h1 {
+    margin: 0 0 6px;
+    font-size: 22px
+}
+
+.site-header .sub {
+    margin: 0;
+    color: var(--muted)
+}
+
+.site-footer {
+    padding: 12px 20px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    text-align: center
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 18px;
+    padding: 18px;
+    min-height: calc(100vh - 110px);
+}
+
+@media (max-width: 900px) {
+    .layout {
+        grid-template-columns: 1fr
+    }
+}
+
+.left,
+.right {
+    display: flex;
+    flex-direction: column;
+    gap: 18px
+}
+
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 16px;
+    box-shadow: var(--shadow)
+}
+
+.panel h2 {
+    margin: 6px 0 12px;
+    font-size: 18px
+}
+
+/* scoreboard */
+.scoreboard .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px
+}
+
+.timebar {
+    height: 10px;
+    background: #0e121a;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    overflow: hidden
+}
+
+.timefill {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #8be88f, #62d0ff)
+}
+
+/* orders */
+.order-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 340px;
+    overflow: auto
+}
+
+.order {
+    background: #141a26;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.order .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px
+}
+
+.order .recipe {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 8px
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    border-radius: 999px;
+    background: #0f1420;
+    border: 1px solid #273048;
+    color: var(--ink);
+    font-size: 13px
+}
+
+/* board / stack */
+.stack {
+    min-height: 160px;
+    border: 1px dashed var(--chipLine);
+    border-radius: 14px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 8px;
+    background: #0f1420;
+}
+
+.chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--chip);
+    border: 1px solid var(--chipLine);
+    border-radius: 12px;
+    padding: 8px 10px;
+}
+
+.chip .em {
+    font-size: 18px
+}
+
+/* pantry */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 10px
+}
+
+.ig {
+    background: #101523;
+    border: 1px solid #2a3448;
+    border-radius: 12px;
+    padding: 10px;
+    cursor: pointer;
+    text-align: left
+}
+
+.ig:hover {
+    border-color: #3a4b6f
+}
+
+.ig .em {
+    font-size: 20px;
+    margin-right: 6px
+}
+
+.ig .nm {
+    font-weight: 700
+}
+
+.ig .tag {
+    display: block;
+    color: var(--muted);
+    font-size: 12px
+}
+
+/* buttons */
+.btn {
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: #1a2130;
+    border: 1px solid #2a3448;
+    color: var(--ink);
+    cursor: pointer
+}
+
+.btn.primary {
+    background: linear-gradient(180deg, #26324a, #1a2436);
+    border-color: #3b4a6a
+}
+
+.btn.ghost {
+    background: transparent
+}
+
+.btn.big {
+    font-size: 18px;
+    padding: 14px 18px
+}
+
+.row.actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px
+}
+
+.mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color: var(--muted)
+}

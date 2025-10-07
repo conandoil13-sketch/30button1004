@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./src/🤩finalHabugiBoss.css">
+    <title>Title</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <h1>🍔 아케이드 키친: 주문 폭주 매니저</h1>
+        <p class="sub">조건문 · 반복문 · 함수 · 배열 · querySelector · 터치이벤트 · Math.random 종합</p>
+    </header>
+
+    <main class="layout">
+        <!-- 좌: 주문 큐/라운드/점수 -->
+        <aside class="left">
+            <section class="panel scoreboard">
+                <div class="row">
+                    <div><b>라운드</b> <span id="round">1</span></div>
+                    <div><b>남은 시간</b> <span id="timeLeft">60.0s</span></div>
+                </div>
+                <div class="row">
+                    <div><b>점수</b> <span id="score">0</span></div>
+                    <div><b>콤보</b> <span id="combo">0x</span></div>
+                </div>
+                <div class="timebar">
+                    <div id="timeFill" class="timefill"></div>
+                </div>
+            </section>
+
+            <section class="panel orders">
+                <h2>🧾 주문 큐</h2>
+                <ol id="orderList" class="order-list"><!-- JS가 채움 --></ol>
+            </section>
+
+            <section class="panel help">
+                <h2>❓ 규칙 (MVP)</h2>
+                <ul>
+                    <li>재료를 클릭해서 쌓고 <b>제출</b>을 누르면 판정.</li>
+                    <li><b>Perfect</b>: 순서·구성 모두 일치 (콤보+1, 시간 +5s)</li>
+                    <li><b>Good</b>: 구성만 같고 순서 다름 (콤보 유지, 시간 +2s)</li>
+                    <li><b>Miss</b>: 누락/과다 (콤보 0, 시간 -3s)</li>
+                </ul>
+            </section>
+        </aside>
+
+        <!-- 우: 조립판 / 재료 -->
+        <section class="right">
+            <section class="panel board">
+                <h2>🧑‍🍳 조립판</h2>
+                <div id="buildStack" class="stack" aria-live="polite" title="위에서부터 아래순으로 쌓입니다">
+                    <!-- JS가 스택 칩을 그림 -->
+                </div>
+                <div class="row actions">
+                    <button id="undoBtn" class="btn ghost">되돌리기</button>
+                    <button id="clearBtn" class="btn ghost">비우기</button>
+                    <button id="submitBtn" class="btn primary">제출</button>
+                </div>
+                <p id="judgeMsg" class="mono"></p>
+            </section>
+
+            <section class="panel pantry">
+                <h2>🥬 재료 창고</h2>
+                <div id="ingredientGrid" class="grid"><!-- JS가 버튼 생성 --></div>
+            </section>
+
+            <section class="panel controls">
+                <button id="startBtn" class="btn big">▶️ 라운드 시작 / 재시작</button>
+            </section>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <small>© 2025 수호 — MVP 빌드 (클릭 입력 중심, 드래그&드롭은 확장 예정)</small>
+    </footer>
+    <a href="index.html" class="return_link">⮐</a>
+    <script type="module" src="./src/🤩finalHabugiBoss.js"></script>
+
+</body>
+
+</html>
