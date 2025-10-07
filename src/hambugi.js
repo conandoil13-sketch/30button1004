@@ -89,6 +89,9 @@
             setTimeout(() => div.classList.remove('bump'), 120);
         });
         updateHUD();
+        document.documentElement.style.setProperty('--stageH',
+            `min(92vmin, ${Math.max(460, needSlots * SLICE_H + 160)}px)`);
+
     }
 
     function renderPalette() {
